@@ -13,6 +13,14 @@ const CURRENCY_NAMES: Record<string, string> = {
   'SGD': '新加坡元',
   'AUD': '澳元',
   'CAD': '加元',
+  'TRY': '土耳其里拉',
+  'CHF': '瑞士法郎',
+  'INR': '印度卢比',
+  'RUB': '俄罗斯卢布',
+  'NZD': '新西兰元',
+  'THB': '泰铢',
+  'VND': '越南盾',
+  'MYR': '马来西亚林吉特',
 };
 
 const CURRENCY_FLAGS: Record<string, string> = {
@@ -26,6 +34,14 @@ const CURRENCY_FLAGS: Record<string, string> = {
   'SGD': '🇸🇬',
   'AUD': '🇦🇺',
   'CAD': '🇨🇦',
+  'TRY': '🇹🇷',
+  'CHF': '🇨🇭',
+  'INR': '🇮🇳',
+  'RUB': '🇷🇺',
+  'NZD': '🇳🇿',
+  'THB': '🇹🇭',
+  'VND': '🇻🇳',
+  'MYR': '🇲🇾',
 };
 
 interface Props {
