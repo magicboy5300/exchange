@@ -44,8 +44,68 @@ const EXCHANGE_RATES = {
 };
 
 // Routes
-app.get('/api/rates', (req, res) => {
-    res.json(EXCHANGE_RATES);
+// Helper to fetch rates
+async function getRates() {
+    // 1. Try to get from Supabase Cache
+    if (supabase) {
+        try {
+            const { data, error } = await supabase
+                .from('exchange_rates')
+                .select('*')
+                .order('updated_at', { ascending: false })
+                .limit(1);
+
+            if (data && data.length > 0) {
+                const lastUpdate = new Date(data[0].updated_at);
+                const now = new Date();
+                const diffHours = (now - lastUpdate) / (1000 * 60 * 60);
+
+                // If cache is fresh (less than 24 hours old)
+                if (diffHours < 24) {
+                    console.log("Serving rates from Supabase cache");
+                    return data[0].rates;
+                }
+            }
+        } catch (err) {
+            console.error("Cache check failed:", err);
+        }
+    }
+
+    // 2. Fetch from External API
+    try {
+        console.log("Fetching fresh rates from API...");
+        const response = await fetch('https://open.er-api.com/v6/latest/USD');
+        const data = await response.json();
+
+        if (data && data.rates) {
+            // Update Cache if Supabase is available
+            if (supabase) {
+                // Insert new record (or we could update existing, but insert log is safer for now)
+                const { error } = await supabase
+                    .from('exchange_rates')
+                    .insert({
+                        base_currency: 'USD',
+                        rates: data.rates,
+                        updated_at: new Date().toISOString()
+                    });
+
+                if (error) console.error("Failed to update cache:", error);
+                else console.log("Rates cached to Supabase");
+            }
+            return data.rates;
+        }
+    } catch (err) {
+        console.error("External API fetch failed:", err);
+    }
+
+    // 3. Fallback to Mock Data if all else fails
+    console.warn("Using fallback mock rates");
+    return EXCHANGE_RATES;
+}
+
+app.get('/api/rates', async (req, res) => {
+    const rates = await getRates();
+    res.json(rates);
 });
 
 app.get('/api/favorites', async (req, res) => {
