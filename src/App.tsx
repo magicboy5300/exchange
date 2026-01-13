@@ -126,7 +126,7 @@ export default function App() {
           <div className="flex items-center justify-center gap-4">
             <Logo className="h-16 w-16 flex-shrink-0" />
             <div className="text-left">
-              <h1 className="text-4xl font-bold text-gray-800">汇率换算工具</h1>
+              <h1 className="text-4xl font-bold text-gray-800 font-sans tracking-tight">RateFlow</h1>
               <p className="text-gray-600">实时汇率换算，支持多种货币</p>
             </div>
           </div>
@@ -143,8 +143,8 @@ export default function App() {
               <button
                 onClick={() => setActiveTab('history')}
                 className={`flex-1 py-3 px-6 font-medium transition-all duration-300 rounded-lg ${activeTab === 'history'
-                    ? 'bg-white text-gray-800 shadow-md'
-                    : 'bg-transparent text-gray-500 hover:bg-white/50 hover:text-gray-700'
+                  ? 'bg-white text-gray-800 shadow-md'
+                  : 'bg-transparent text-gray-500 hover:bg-white/50 hover:text-gray-700'
                   }`}
               >
                 换算历史 ({history.length})
@@ -152,8 +152,8 @@ export default function App() {
               <button
                 onClick={() => setActiveTab('favorites')}
                 className={`flex-1 py-3 px-6 font-medium transition-all duration-300 rounded-lg ${activeTab === 'favorites'
-                    ? 'bg-white text-gray-800 shadow-md'
-                    : 'bg-transparent text-gray-500 hover:bg-white/50 hover:text-gray-700'
+                  ? 'bg-white text-gray-800 shadow-md'
+                  : 'bg-transparent text-gray-500 hover:bg-white/50 hover:text-gray-700'
                   }`}
               >
                 收藏记录 ({favorites.length})
