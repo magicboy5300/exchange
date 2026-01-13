@@ -124,7 +124,7 @@ export default function App() {
       <div className="container mx-auto px-4 py-8 max-w-7xl relative z-10">
         <header className="mb-8">
           <div className="flex items-center justify-center gap-4">
-            <Logo className="h-16 w-auto flex-shrink-0 p-[10px]" />
+            <Logo className="h-12 w-auto flex-shrink-0" />
             <div className="text-left">
               <h1 className="text-4xl font-bold text-gray-800 font-sans tracking-tight">RateFlow</h1>
               <p className="text-gray-600">实时汇率换算，支持多种货币</p>
