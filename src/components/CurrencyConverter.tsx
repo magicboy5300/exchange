@@ -139,7 +139,7 @@ export function CurrencyConverter({ onConvert }: Props) {
           <select
             value={fromCurrency}
             onChange={(e) => setFromCurrency(e.target.value)}
-            className="px-4 py-3 pr-10 outline-none bg-transparent cursor-pointer text-sm font-medium appearance-none"
+            className="px-4 py-3 pr-10 outline-none bg-transparent cursor-pointer text-sm font-medium appearance-none max-w-[140px] truncate"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
               backgroundRepeat: 'no-repeat',
@@ -184,7 +184,7 @@ export function CurrencyConverter({ onConvert }: Props) {
           <select
             value={toCurrency}
             onChange={(e) => setToCurrency(e.target.value)}
-            className="px-4 py-3 pr-10 outline-none bg-transparent cursor-pointer text-sm font-medium appearance-none"
+            className="px-4 py-3 pr-10 outline-none bg-transparent cursor-pointer text-sm font-medium appearance-none max-w-[140px] truncate"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
               backgroundRepeat: 'no-repeat',
